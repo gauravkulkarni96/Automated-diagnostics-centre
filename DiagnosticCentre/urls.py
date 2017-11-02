@@ -18,9 +18,7 @@ from django.views import View
 from django.conf import settings
 from django.conf.urls.static import static
 
-from home.views import (home, profile, test, appointments, 
-							checkAvailability, cancel, staffview,
-							addstaff, removestaff, upload, uploadrep, download, showreports)
+from home.views import home, profile, test, appointments, checkAvailability, cancel, staffview,addstaff, removestaff, upload, uploadrep, download, showreports
 from login.views import LoginHandler, LogoutHandler, RegisterUser
 from admin.views import AdminLogin, managestaff
 
