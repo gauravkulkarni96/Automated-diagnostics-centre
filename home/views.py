@@ -254,7 +254,7 @@ def uploadrep(request):
 			my_database = client['reports']
 			# content = b64encode(file.read())
 			doc = {'uploaded_by': request.session['user_id'], "type": types, "email": email, "pharmacy": pharmacy, 
-					"doctor": doctor, "comment": comment, "date": date, "time":time, "file": content}
+					"doctor": doctor, "comment": comment, "date": date, "time":time, "file": file}
 
 			new_doc = my_database.create_document(doc)
 			# connection.close()
