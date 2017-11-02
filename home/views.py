@@ -130,7 +130,7 @@ def test(request, testname):
 		else:
 			base = datetime.datetime.today()
 			date_list = [(base + datetime.timedelta(days=x)).date for x in range(0, 5)]
-			time_slots = ["9PM", "10PM", "11PM", "12PM", "2PM", "3PM", "4PM", "5PM", "6PM"]
+			time_slots = ["9AM", "10AM", "11AM", "12PM", "2PM", "3PM", "4PM", "5PM", "6PM"]
 			context = {
 				'dates': date_list,
 				'times': time_slots,

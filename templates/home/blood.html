@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="{% static '/css/material.min.css' %}">
 <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -133,7 +134,7 @@ input[type=radio] {
 	$('input[name="timeslot"]').on('change', function() {
 		var name = "{{ title }}"
 		console.log(name);
-		$("#availability").html("<p style='color:blue'>Please wait! Checking for availability.</p>");
+		$("#availability").html("<p style='color:blue'font-size:20px;'><b>Please wait! Checking for availability.</b></p>");
 		$("#submit").prop("disabled", true);
 		$.ajax({
 			type:"GET",
@@ -145,11 +146,11 @@ input[type=radio] {
 			},
 			success : function (data){
 				if(data['message'] == "Available"){
-					$("#availability").html("<p style='color:green'>"+data['message']+"</p>");
+					$("#availability").html("<p style='color:green; font-size:20px;'><b>"+data['message']+"</b></p>");
 					$("#submit").prop("disabled", false);
 				}
 				else{
-					$("#availability").html("<p style='color:red'>"+data['message']+"</p>");
+					$("#availability").html("<p style='color:red'font-size:20px;'><b>"+data['message']+"</b></p>");
 					$("#submit").prop("disabled", true);
 				}
 			}

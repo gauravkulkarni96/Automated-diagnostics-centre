@@ -73,7 +73,7 @@
 					<p class="card-text">{{ i.time }} on {{ i.date }}</p>
 					<form method="POST" action="/cancel">{% csrf_token %}
 						<input type="hidden" name="id" value="{{ i|privatef }}">
-						<input class="btn btn-danger" type="submit" id="submit" name="submit" value="Cancel">
+						<input class="btn btn-danger" type="submit" id="submit" name="submit" value="Cancel" style="color:red;">
 					</form>
 				</div>
 			<br>
