@@ -53,7 +53,6 @@ class LoginHandler(View):
 		# print request.POST.get('type')
 		if request.POST.get('type') == 'customer':
 			redirect = '/'
-			print "abcd"
 			if 'redirect' in request.POST:
 				redirect = request.POST['redirect']
 
@@ -61,14 +60,12 @@ class LoginHandler(View):
 
 				pwd = authhelper.crypt(request.POST['pwd'])
 				email = request.POST['email']
-				print email, pwd
 				client = connection.create()
 				my_database = client['users']
 				for i in my_database:
 					pass
 				if email in my_database:
 					doc = my_database[email]
-					print doc['password']
 					if doc['password'] == pwd:
 						request.session['user_id'] = doc['_id']
 						request.session['user_type'] = 'U'
