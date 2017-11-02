@@ -25,7 +25,7 @@ SECRET_KEY = '8-1#ja$95fl4&lvaja&3nia)pam@iz84h645=9n-6dd)37i-w='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'127.0.0.1']
+ALLOWED_HOSTS = [u'127.0.0.1', "diagnosticcentre.herokuapp.com"]
 
 
 # Application definition
