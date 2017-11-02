@@ -119,7 +119,6 @@ def test(request, testname):
 		if request.method == "POST":
 			date = request.POST.get('date')
 			time = request.POST.get('timeslot')
-			print date, time
 			client = connection.create()
 			my_database = client['appointments']
 			doc = {'email': request.session['user_id'], "type": testname, "date": date, "time": time}
