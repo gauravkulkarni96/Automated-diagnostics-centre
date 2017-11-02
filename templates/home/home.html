@@ -21,11 +21,11 @@
 				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Services</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+			</ul>
 
 				{% if "user_id" in request.session %}
-					<li class="mr-sm-2 dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{ request.session.user_id }}
-					<span class="caret"></span>
+					<span class="mr-sm-2 dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user">{{ request.session.user_id }}</span> 
 					</a>
 					<ul class="dropdown-menu ">
 					{% ifequal request.session.user_type "U" %}
@@ -42,23 +42,24 @@
 					{% endifequal %}
 					<li><a class="dropdown-item" href="/logout?redirect=/"> Logout </a></li>
 				</ul>
-			</li>
+			</span>
 			{% else %}
 			<li><a class="nav-link" href="/login?redirect=/"><span class="glyphicon glyphicon-log-in"> Login </a></li>
 			{% endif %}
-			</ul>
+			
+		</div>
 		</div>
 </nav>
 
     <!-- Header with Background Image -->
 <header class="header_image">
-	<div class="container" style="background-image: https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjLp9_G6Z_XAhWHo48KHZaJDLQQjRwIBw&url=http%3A%2F%2Fwww.bangaloremedia.in%2Fsites_category%2Fdiagnostic-centre%2F&psig=AOvVaw0cEg0y_VR47vTZX-jXZzGN&ust=1509709818922251">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="display-3 text-center text-white mt-4">Get your tests done!</h1>
-			</div>
-		</div>
-	</div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
+          </div>
+        </div>
+      </div>
 </header>
 
 
@@ -76,9 +77,8 @@
 				<div class="col-sm-4">
 					<h2 class="mt-4">Contact Us</h2>
 					<address>
-						<strong>Start Bootstrap</strong>
-						<br>3481 Melrose Place
-						<br>Beverly Hills, CA 90210
+						<strong>Diagnostic Center</strong>
+						<br>Malviya Nagar, Jaipur
 						<br>
 					</address>
 					<address>
@@ -101,7 +101,7 @@
 						<div class="card wow fadeIn" data-wow-delay="0.2s">
 
 							<!--Card image-->
-							<img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(120).jpg" alt="Card image cap">
+							<img class="img-fluid" src="https://nedrugtest.com/wp-content/uploads/2015/10/Blood-Testing-Image.jpg" alt="Card image cap">
 
 							<!--Card content-->
 							<div class="card-body">
@@ -124,7 +124,7 @@
 						<div class="card wow fadeIn" data-wow-delay="0.4s">
 
 							<!--Card image-->
-							<img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg" alt="Card image cap">
+							<img class="img-fluid" src="https://www.cdc.gov/nceh/radiation/images/x-rays.jpg" style="height: 173px;" alt="Card image cap">
 
 							<!--Card content-->
 							<div class="card-body">
@@ -148,7 +148,7 @@
 						<div class="card wow fadeIn" data-wow-delay="0.6s">
 
 							<!--Card image-->
-							<img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(122).jpg" alt="Card image cap">
+							<img class="img-fluid" src="http://images.addictionblog.org/cherrycake/wp-content/uploads/2015/06/Advantages-of-EtG-urine-testing-for-alcohol-2.png" style="height: 173px;" alt="Card image cap">
 
 							<!--Card content-->
 							<div class="card-body">

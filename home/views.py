@@ -240,7 +240,7 @@ def upload(request, id):
 def uploadrep(request):
 	if "user_id" in request.session and request.session['user_type'] == "S" and request.session['staff_type'] == "SS":
 		if request.method=="POST":
-			file = request.FILES['file']
+			file = request.POST.get('file')
 			comment = request.POST.get('comment')
 			doctor = request.POST.get('doctor')
 			pharmacy = request.POST.get('pharmacy')
@@ -252,7 +252,7 @@ def uploadrep(request):
 
 			client = connection.create()
 			my_database = client['reports']
-			content = b64encode(file.read())
+			# content = b64encode(file.read())
 			doc = {'uploaded_by': request.session['user_id'], "type": types, "email": email, "pharmacy": pharmacy, 
 					"doctor": doctor, "comment": comment, "date": date, "time":time, "file": content}
 

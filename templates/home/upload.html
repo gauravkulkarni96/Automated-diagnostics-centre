@@ -83,7 +83,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<h3>Report Details</h3>
-		<form method="POST" action="/uploadrep" enctype="multipart/form-data">{% csrf_token %}
+		<form method="POST" action="/uploadrep">{% csrf_token %}
 		<div class="form-group">
 			<input type="hidden" name="id" value="{{ appointment|privatef }}">
 		</div>
@@ -100,7 +100,7 @@
 			<input type="hidden" name="type" value="{{ appointment.type }}">
 		</div><br>
 
-		Upload report: <input type="file" name="file" accept="uploaded_files/*" required><br><br>
+		Report Link: <input type="text" name="file" required><br><br>
 		Comments: <textarea name="comment" rows="4"></textarea><br><br>
 		Doctor Recommendation: <select name="doctor">
 								<option value="None">--Select--</option>
