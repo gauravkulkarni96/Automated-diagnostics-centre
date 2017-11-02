@@ -1,0 +1,108 @@
+h5
+{
+	font-weight: 400;
+}
+
+.container
+{
+	margin-top: 80px;
+	width: 400px;
+	height: 700px;
+}
+
+.tabs .indicator
+{
+	background-color: #e0f2f1;
+	height: 60px;
+	opacity: 0.3;
+}
+
+.form-container
+{
+	padding: 40px;
+	padding-top: 10px;
+}
+
+.confirmation-tabs-btn
+{
+	position: absolute;
+}
+
+#login_title h3
+{
+	text-align: center;
+}
+
+#login_box {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #fff;
+}
+
+#login_box_internal
+{
+	margin: 20px 0px;
+	vertical-align: center;
+}
+
+@media(min-width: 768px)
+{
+	body
+	{
+		background-color: #ececec;
+	}
+	#login_box
+	{
+		box-shadow: 0px 0px 8px #ddd;
+	}
+}
+
+body
+{
+	background-color: #fff;
+}
+
+
+#register_title h3
+{
+	text-align: center;
+}
+
+#register_box {
+	position: absolute;
+	background-color: #fff;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#register_box_internal
+{
+	margin: 20px 0px;
+}
+
+@media(min-width: 768px)
+{
+	body
+	{
+		background-color: #ececec;
+	}
+	#register_box
+	{
+		box-shadow: 0px 0px 8px #ddd;
+	}
+}
+
+#red
+{
+	color: red;
+	font-size: 14px;
+}
+
+#info
+{
+	font-size: 12px;
+	color: #666;
+}
