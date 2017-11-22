@@ -75,12 +75,11 @@
 		<div class="container">
 				<div class="row my-5">
 					<!--First columnn-->
-
 					<div class="col-lg-8">
 						<!--Card-->
 						<div class="card wow fadeIn" data-wow-delay="0.2s">
 
-							<h1 style="margin: 25px;">Reports</h1>
+							<h1 style="margin: 25px;">Assigned Appointments</h1>
 							{% load privatef from private %}
 
 							{% if messages %}
@@ -91,36 +90,49 @@
 								</div>
 							{% endif %}
 
-
-							{% for i in reports %}
+							{% ifequal request.session.staff_type "SS" %}
+								<form action="/schedule" method="POST">{% csrf_token %}
+									<select name="appointment">
+										{% for i in appointments %}
+											<option value="{{ i.doc|privatef }}">{{ i.doc.type }} : {{ i.doc.time }} : {{ i.doc.date }}</option>
+										{% endfor %}
+									</select>
+									<select name="staff">
+										{% for i in staff %}
+											<option value="{{ i.doc|privatef }}">{{ i.doc.name }} : {{ i.doc.type }}</option>
+										{% endfor %}
+									</select>
+									<input type="submit" name="submit" value="Save">
+								</form>
+							
+							{% for i in schedule %}
 							<div class="card-body">
 								<h3 class="card-title">{{ i.type }} test</h3>
-								<p class="card-text"><b>Appointment:</b> {{ i.time }} on {{ i.date }}</p>
-								<p class="card-text"><b>Comment:</b> {{ i.comment }}</p>
-								<p class="card-text"><b>Recommended Doctor:</b> {{ i.doctor }}</p>
-								<p class="card-text"><b>Recommended Pharmacy:</b> {{ i.pharmacy }}</p>
-								<a href="{{ i.file }}"><button class="btn btn-primary">Download Report</button></a>
-
+								<p class="card-text"><b>Appointment:</b> {{ i.doc.time }} on {{ i.doc.date }}</p>
+								<p class="card-text"><b>User:</b> {{ i.doc.email }}</p>
+								<p class="card-text"><b>Staff:</b> {{ i.doc.name }}</p>
 								<br><br>
 								<hr>
 							</div>
 							<br>
 							{% endfor %}
+							{% endifequal %}
+							{% ifequal request.session.staff_type "N" %}
+							{% for i in schedule %}
+							<div class="card-body">
+								<h3 class="card-title">{{ i.type }} test</h3>
+								<p class="card-text"><b>Appointment:</b> {{ i.time }} on {{ i.date }}</p>
+								<p class="card-text"><b>User:</b> {{ i.email }}</p>
+								<p class="card-text"><b>Staff:</b> {{ i.name }}</p>
+								<br><br>
+								<hr>
+							</div>
+							<br>
+							{% endfor %}
+							{% endifequal %}
 
 						</div>
 
-	</div>
-	<div style="float:right; width:250px">
-	<form method="POST" action="/feedback">{% csrf_token %}
-		<h3>Feedback</h3>
-		<select name="appointment" class="btn" style="color:black">
-		{% for i in reports %}
-			<option value="{{ i|privatef }}" style="color:black">{{ i.type }} test on {{ i.date }} {{ i.time }}</option>
-		{% endfor %}
-		</select><br><br>
-		<input type="text" name="feedback" placeholder="Feedback">
-		<input type="submit" name="" class="btn btn-primary">
-		</form>
 	</div>
 	</div>
 	</main>

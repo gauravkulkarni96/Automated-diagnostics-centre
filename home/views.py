@@ -300,3 +300,69 @@ def download(request):
 			'file': file,
 		}
 		return render(request, 'home/test.html', context)
+
+def schedule(request):
+	if "user_id" in request.session and request.session['user_type'] == "S":
+		client = connection.create()
+		if request.method == "POST":
+			appointment = request.POST.get('appointment')
+			staff = request.POST.get('staff')
+			my_database = client['appointments']
+			res = cloudant.query.Query(my_database, selector={"_id":appointment},fields=["email", "type", "time", "date"])
+			appoint = res(limit=100, skip=0)["docs"]
+			my_database = client['staff']
+			res = cloudant.query.Query(my_database, selector={"_id":staff},fields=["_id", "name"])
+			staffq = res(limit=100, skip=0)["docs"]
+			my_database = client['schedule']
+			doc = {'staff': staffq[0]['_id'], "type": appoint[0]['type'],'email':appoint[0]['email'], "name": staffq[0]['name'], "time": appoint[0]['time'], "date": appoint[0]['date']}
+			new_doc = my_database.create_document(doc)
+
+		context = {}
+		if request.session['staff_type'] == "SS":
+			my_database = client['appointments']
+			allappoints = cloudant.result.Result(my_database.all_docs, include_docs=True)
+			
+			my_database = client['staff']
+			allstaff = cloudant.result.Result(my_database.all_docs, include_docs=True)
+
+			my_database = client['schedule']
+			allschedule = cloudant.result.Result(my_database.all_docs, include_docs=True)
+			context = {
+				'appointments':allappoints,
+				'staff':allstaff,
+				'schedule':allschedule,
+			}
+		else:
+			my_database = client['schedule']
+			res = cloudant.query.Query(my_database, selector={"staff":request.session['user_id']},fields=["name", "email", "time", "date", "type"])
+			allschedule = res(limit=100, skip=0)["docs"]
+			context = {
+				'schedule':allschedule,
+			}
+		return render(request, "home/schedule.html", context)
+	else:
+		return HttpResponseRedirect('/')
+
+def feedback(request):
+	if request.method == 'POST':
+		report = request.POST.get('appointment')
+		feedback = request.POST.get('feedback')
+
+		client = connection.create()
+		my_database = client['reports']
+		res = cloudant.query.Query(my_database, selector={"_id":report},fields=["type", "date", "time", "email"])
+		rep = res(limit=100, skip=0)["docs"]
+		my_database = client['feedback']
+		doc = {"type": rep[0]['type'],'email':rep[0]['email'], "date": rep[0]['date'], "time": rep[0]['time'], "feedback": feedback}
+		new_doc = my_database.create_document(doc)
+		messages.info(request, 'Thank you for your feedback!')
+	elif "user_id" in request.session and request.session['user_type'] == "A":
+		client = connection.create()
+		my_database = client['feedback']
+		feedbacks = cloudant.result.Result(my_database.all_docs, include_docs=True)
+		context = {
+			'feedbacks':feedbacks,
+		}
+		return render(request, "home/feeds.html", context)
+
+	return HttpResponseRedirect('/reports')

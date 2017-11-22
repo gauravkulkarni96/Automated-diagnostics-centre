@@ -33,12 +33,12 @@
 					<li><a class="dropdown-item" href="/appointments"> Upcoming Appointments</a></li>
 					{% endifequal %}
 					{% ifequal request.session.user_type "S" %}
-					<li><a class="dropdown-item" href="/"> View Schedule </a></li>
+					<li><a class="dropdown-item" href="/schedule"> View Schedule </a></li>
 					<li><a class="dropdown-item" href="/staffview"> Upload Reports</a></li>
 					{% endifequal %}
 					{% ifequal request.session.user_type "A" %}
 					<li><a class="dropdown-item" href="/managestaff"> Manage Staff </a></li>
-					<li><a class="dropdown-item" href="/"> Schedule Staff</a></li>
+					<li><a class="dropdown-item" href="/schedule"> Schedule Staff</a></li>
 					{% endifequal %}
 					<li><a class="dropdown-item" href="/logout?redirect=/"> Logout </a></li>
 				</ul>

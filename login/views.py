@@ -98,6 +98,10 @@ class LoginHandler(View):
 						request.session['user_id'] = doc['_id']
 						request.session['user_type'] = 'S'
 						request.session['staff_type'] = doc['type']
+						if doc['type'] == 'SS':
+							redirect = '/staffview'
+						else:
+							redirect = '/schedule'
 						return HttpResponseRedirect(redirect)
 
 				request.session['authcode'] = 1

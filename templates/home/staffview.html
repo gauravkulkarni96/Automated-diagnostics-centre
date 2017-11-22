@@ -79,7 +79,7 @@
 						<!--Card-->
 						<div class="card wow fadeIn" data-wow-delay="0.2s">
 
-							<h1 style="margin: 25px;">Assigned Appointments</h1>
+							<h1 style="margin: 25px;">All Appointments</h1>
 							{% load privatef from private %}
 
 							{% if messages %}
@@ -96,7 +96,7 @@
 								<h3 class="card-title">{{ i.doc.type }} test</h3>
 								<p class="card-text"><b>Appointment:</b> {{ i.doc.time }} on {{ i.doc.date }}</p>
 								<p class="card-text"><b>User:</b> {{ i.doc.email }}</p>
-								<a href="/upload/{{ i.doc|privatef }}"><button class="btn btn-primary">Upload Report</button></a>
+								{% ifequal request.session.staff_type "SS" %}<a href="/upload/{{ i.doc|privatef }}"><button class="btn btn-primary">Upload Report</button></a>{% endifequal %}
 								<br><br>
 								<hr>
 							</div>
