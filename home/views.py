@@ -163,7 +163,7 @@ def checkAvailability(request):
 	my_database = client['appointments']
 	res = cloudant.query.Query(my_database, selector={"type":testname, "date" : date, "time": time} ,fields=['type', 'date', 'time'])
 	count = res(limit=100, skip=0)["docs"]
-	if len(count) >= 10:
+	if len(count) >= 2:
 		message = "Not Available"
 	else:
 		message = "Available"
@@ -273,8 +273,9 @@ def showreports(request):
 	if "user_id" in request.session and request.session['user_type'] == "U":
 		client = connection.create()
 		my_database = client['reports']
-		res = cloudant.query.Query(my_database, selector={"email":request.session["user_id"]},fields=["_id","type", "email", "pharmacy", "doctor", "comment", "date", "time"])
+		res = cloudant.query.Query(my_database, selector={"email":request.session["user_id"]},fields=["_id","type", "email", "pharmacy", "doctor", "comment", "date", "time", "file"])
 		reports = res(limit=100, skip=0)["docs"]
+		# print reports[0]["comment"]
 		context = {
 			'reports':reports,
 		}

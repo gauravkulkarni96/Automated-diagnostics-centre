@@ -43,11 +43,12 @@
 	  </header>
 	  <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 		<header class="demo-drawer-header">
+		<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"> {{ request.session.user_id }}</p>
 		</header>
 
 		<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
 		  <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Home</a>
-		  <a class="mdl-navigation__link" href="/report"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>My Reports</a>
+		  <a class="mdl-navigation__link" href="/reports"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>My Reports</a>
 		  <a class="mdl-navigation__link" href="/appointments"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Upcoming Appointments</a>
 		  <a class="mdl-navigation__link" href="/logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Logout</a>
 		  <div class="mdl-layout-spacer"></div>
@@ -86,7 +87,7 @@
 								<p class="card-text"><b>Comment:</b> {{ i.comment }}</p>
 								<p class="card-text"><b>Recommended Doctor:</b> {{ i.doctor }}</p>
 								<p class="card-text"><b>Recommended Pharmacy:</b> {{ i.pharmacy }}</p>
-								<a href="{{ i.file }}"><button class="btn btn-primary">Download Report</button></a>
+								<a href="{{ i.file }}" target="_blank"><button class="btn btn-primary">Download Report</button></a>
 
 								<br><br>
 								<hr>
@@ -100,9 +101,9 @@
 	<div style="float:right; width:250px">
 	<form method="POST" action="/feedback">{% csrf_token %}
 		<h3>Feedback</h3>
-		<select name="appointment" class="btn" style="color:black">
+		<select name="appointment" class="btn" style="background:black;color:white">
 		{% for i in reports %}
-			<option value="{{ i|privatef }}" style="color:black">{{ i.type }} test on {{ i.date }} {{ i.time }}</option>
+			<option value="{{ i|privatef }}">{{ i.type }} test on {{ i.date }} {{ i.time }}</option>
 		{% endfor %}
 		</select><br><br>
 		<input type="text" name="feedback" placeholder="Feedback">

@@ -3,6 +3,7 @@
 {% block headcss %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+<script src="https://use.fontawesome.com/34e3857a3d.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -10,7 +11,7 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="/">Diagnostic Centre</a>
+		<a class="navbar-brand" href="/">CURE IT LABS</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -25,7 +26,7 @@
 
 				{% if "user_id" in request.session %}
 					<span class="mr-sm-2 dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user">{{ request.session.user_id }}</span> 
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color:white; background:#304a74">{{ request.session.user_id }}</span> 
 					</a>
 					<ul class="dropdown-menu ">
 					{% ifequal request.session.user_type "U" %}
@@ -38,13 +39,12 @@
 					{% endifequal %}
 					{% ifequal request.session.user_type "A" %}
 					<li><a class="dropdown-item" href="/managestaff"> Manage Staff </a></li>
-					<li><a class="dropdown-item" href="/schedule"> Schedule Staff</a></li>
 					{% endifequal %}
 					<li><a class="dropdown-item" href="/logout?redirect=/"> Logout </a></li>
 				</ul>
 			</span>
 			{% else %}
-			<li><a class="nav-link" href="/login?redirect=/"><span class="glyphicon glyphicon-log-in"> Login </a></li>
+			<a class="nav-link" href="/login?redirect=/" style="color:white; background:#304a74"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a>
 		{% endif %}
 			
 	</div>
@@ -62,25 +62,25 @@
 			<div class="row my-5">
 				<div class="col-sm-8">
 					<h2 class="mt-4">What We Do</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-					<p>
+					<p>Cure It Labs is India's first fully automated diagnostic laboratory with a focus on providing quality at affordable costs to laboratories and hospitals in India and other countries.</p>
+					<p>Cure It Labs operates with a Centralized Processing Laboratory (CPL) in Jaipur - India for esoteric tests; and Regional Processing Laboratory in major metro cities of India and other parts of Asia. We have focus on strong technologies, strong brands and strong systems that enable all laboratories to give their clients the best of science and technology at an affordable cost.</p>
+					<!-- <p>
 						<a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
-					</p>
+					</p> -->
 				</div>
 				<div class="col-sm-4">
 					<h2 class="mt-4">Contact Us</h2>
 					<address>
-						<strong>Diagnostic Center</strong>
+						<strong>Cure It Labs</strong>
 						<br>Malviya Nagar, Jaipur
 						<br>
 					</address>
 					<address>
 						<abbr title="Phone">P:</abbr>
-						(123) 456-7890
+						(+91) 0141-2563145
 						<br>
 						<abbr title="Email">E:</abbr>
-						<a href="mailto:#">name@example.com</a>
+						<a href="mailto:#">contact@cureit.com</a>
 					</address>
 				</div>
 			</div>
@@ -88,6 +88,9 @@
 
 		<!--Card Content-->
 		<div class="container">
+		<h2>
+			Tests we Provide
+		</h2>
 				<div class="row my-5">
 					<!--First columnn-->
 					<div class="col-lg-4">
@@ -102,7 +105,7 @@
 								<!--Title-->
 								<h4 class="card-title">Blood Test</h4>
 								<!--Text-->
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		
 								{% if name %}
 								<a href="/book/blood" class="btn btn-info">Book Appointment</a>{% endif %}
 							</div>
@@ -125,7 +128,7 @@
 								<!--Title-->
 								<h4 class="card-title">X-Ray</h4>
 								<!--Text-->
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								
 								{% if name %}
 								<a href="/book/xray" class="btn btn-info">Book Appointment</a>{% endif %}
 							</div>
@@ -149,7 +152,7 @@
 								<!--Title-->
 								<h4 class="card-title">Urine Test</h4>
 								<!--Text-->
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								
 								{% if name %}
 								<a href="/book/urine" class="btn btn-info">Book Appointment</a>{% endif %}
 							</div>
@@ -174,11 +177,9 @@
 
                 <!--First column-->
                 <div class="col-lg-3 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS,
-                        and JS framework - Bootstrap.</p>
+                    <h5 class="title font-bold mt-3 mb-4">About Cure It Labs</h5>
+                    <p>Cure It Labs is India's first fully automated diagnostic laboratory with a focus on providing quality at affordable costs to laboratories and hospitals in India and other countries.</p>
+					<p>We have focus on strong technologies, strong brands and strong systems that enable all laboratories to give their clients the best of science and technology at an affordable cost.</p>
                 </div>
                 <!--/.First column-->
 
@@ -186,28 +187,15 @@
 
                 <!--Second column-->
                 <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">Recent Trips</h5>
+                    <h5 class="title font-bold mt-3 mb-4">Assets</h5>
                     <ul>
-                        <li><a href="#!">Balkans</a></li>
-                        <li><a href="#!">Tatra Mountains</a></li>
-                        <li><a href="#!">Norway Fjords</a></li>
-                        <li><a href="#!">Baikal Lake</a></li>
+                        <li><a href="#!">X-Ray Machine</a></li>
+                        <li><a href="#!">CT Scan</a></li>
+                        <li><a href="#!">MRI</a></li>
+                        <li><a href="#!">Tissue Processor</a></li>
                     </ul>
                 </div>
                 <!--/.Second column-->
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title font-bold mt-3 mb-4">My guest articles</h5>
-                    <ul>
-                        <li><a href="#!">"Things I learn on the road"</a></li>
-                        <li><a href="#!">"Low-budget traveling made simple"</a></li>
-                        <li><a href="#!">"Talking with locals"</a></li>
-                        <li><a href="#!">"Leaving things behind"</a></li>
-                    </ul>
-                </div>
                 <!--/.Third column-->
 
                 <hr class="w-100 clearfix d-sm-none">

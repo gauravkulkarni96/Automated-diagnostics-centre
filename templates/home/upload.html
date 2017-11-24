@@ -59,23 +59,35 @@
 </nav>
 	</header>
 	<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-	<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800 navbar-fixed">
-	  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-	  <a class="mdl-navigation__link" href="report.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>My Reports</a>
-	  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Upcoming Appointments</a>
-	  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Upload Report</a>
-	  <div class="mdl-layout-spacer"></div>
-	  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-	</nav>
+	<header class="demo-drawer-header"><br><br><br><br><br><br>
+		<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"> {{ request.session.user_id }}</p>
+		</header>
+		{% ifequal request.session.staff_type 'SS' %}
+		<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+		  <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Home</a>
+		  <a class="mdl-navigation__link" href="/schedule"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Schedule Staff</a>
+		  <a class="mdl-navigation__link" href="/upload"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Upload Report</a>
+		  <a class="mdl-navigation__link" href="/logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>logout</a>
+		</nav>
+		{% endifequal %}
+
+		{% ifequal request.session.staff_type 'N' %}
+		<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+		  <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>Home</a>
+		  <a class="mdl-navigation__link" href="/schedule"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>My schedule</a>
+		  <a class="mdl-navigation__link" href="/appointments"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>All appointments</a>
+		  <a class="mdl-navigation__link" href="/logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>logout</a>
+		</nav>
+		{% endifequal %}
 	</div>
 <div class="container">
 <div class="row">
 	<div class="col-lg-8">
 		{% load privatef from private %}
 		<h3>Appointment Details</h3>
-		Type: {{ appointment.type }}<br>
-		Customer E-mail: {{ appointment.email }}<br>
-		Appointment: {{ appointment.time }} on {{ appointment.date }}
+		<b>Type:</b> {{ appointment.type }}<br>
+		<b>Customer E-mail:</b> {{ appointment.email }}<br>
+		<b>Appointment:</b> {{ appointment.time }} on {{ appointment.date }}
 		<hr>
 	</div>
 </div>
@@ -100,9 +112,9 @@
 			<input type="hidden" name="type" value="{{ appointment.type }}">
 		</div><br>
 
-		Report Link: <input type="text" name="file" required><br><br>
-		Comments: <textarea name="comment" rows="4"></textarea><br><br>
-		Doctor Recommendation: <select name="doctor">
+		Report Link: <input type="text" name="file" required placeholder="Link to report"><br><br>
+		Comments: <textarea name="comment" rows="4" placeholder="Additional comments"></textarea><br><br>
+		Doctor Recommendation: <select name="doctor" class="btn" style="background:black">
 								<option value="None">--Select--</option>
 								<optgroup label ="Dermatologist">
 								<option value="Dr. Sachin Sharda">Dr. Sachin Sharda</option>
@@ -118,7 +130,7 @@
 								<option value="Dr. Arun Partani">Dr. Arun Partani</option>
 								</optgroup>
 								</select><br><br>
-		Pharmacy Recommendation: <input type="text" name="pharmacy"><br><br>
+		Pharmacy Recommendation: <input type="text" name="pharmacy" placeholder="Recommend Pharmacy"><br><br>
 		<input class="btn btn-primary" type="submit" name="submit">
 		</form>
 	</div>
