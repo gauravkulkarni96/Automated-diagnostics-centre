@@ -35,7 +35,8 @@
 					{% endifequal %}
 					{% ifequal request.session.user_type "S" %}
 					<li><a class="dropdown-item" href="/schedule"> View Schedule </a></li>
-					<li><a class="dropdown-item" href="/staffview"> Upload Reports</a></li>
+					{% ifequal request.session.staff_type "SS" %}
+					<li><a class="dropdown-item" href="/staffview"> Upload Reports</a></li>{% endifequal %}
 					{% endifequal %}
 					{% ifequal request.session.user_type "A" %}
 					<li><a class="dropdown-item" href="/managestaff"> Manage Staff </a></li>
